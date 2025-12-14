@@ -10,11 +10,11 @@
 }
 
 .skill-nav-item {
-  padding: var(--s-sm) var(--s-md);
+  padding: var(--spacing-sm) var(--spacing-md);
   background: transparent;
   border: none;
   border-left: 2px solid transparent;
-  color: var(--c-ash);
+  color: var(--color-ash);
   font-family: var(--font-body);
   font-size: 0.9375rem;
   font-weight: 400;
@@ -26,14 +26,14 @@
 }
 
 .skill-nav-item:hover {
-  color: var(--c-text);
-  background: color-mix(in oklch, var(--c-paper) 85%, var(--c-accent));
+  color: var(--color-text);
+  background: color-mix(in oklch, var(--color-paper) 85%, var(--color-accent));
 }
 
 .skill-nav-item.active {
-  color: var(--c-accent);
-  border-left-color: var(--c-accent);
-  background: color-mix(in oklch, var(--c-accent) 5%, var(--c-paper));
+  color: var(--color-accent);
+  border-left-color: var(--color-accent);
+  background: color-mix(in oklch, var(--color-accent) 5%, var(--color-paper));
   font-weight: 500;
 }
 
@@ -41,17 +41,17 @@
   .skills-nav {
     flex-direction: row;
     flex-wrap: wrap;
-    gap: var(--s-xs);
+    gap: var(--spacing-xs);
   }
   
   .skill-nav-item {
     border-left: none;
     border-bottom: 2px solid transparent;
-    padding: var(--s-xs) var(--s-md);
+    padding: var(--spacing-xs) var(--spacing-md);
   }
   
   .skill-nav-item.active {
-    border-bottom-color: var(--c-accent);
+    border-bottom-color: var(--color-accent);
   }
 }
 
@@ -59,7 +59,7 @@
 .skills-showcase {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
-  gap: var(--s-lg);
+  gap: var(--spacing-lg);
   align-items: start;
   
   @media (max-width: 1100px) {
@@ -86,7 +86,7 @@
 }
 
 .skill-header {
-  margin-bottom: var(--s-md);
+  margin-bottom: var(--spacing-md);
 }
 
 .skill-header h3 {
@@ -94,17 +94,17 @@
   font-size: 1.75rem;
   font-weight: 300;
   font-style: italic;
-  margin: 0 0 var(--s-xs) 0;
-  color: var(--c-text);
+  margin: 0 0 var(--spacing-xs) 0;
+  color: var(--color-text);
   letter-spacing: -0.02em;
   line-height: 1.1;
 }
 
 .skill-header .meta {
   display: flex;
-  gap: var(--s-sm);
+  gap: var(--spacing-sm);
   align-items: center;
-  color: var(--c-ash);
+  color: var(--color-ash);
   font-size: 0.8125rem;
   font-weight: 400;
   letter-spacing: 0.03em;
@@ -112,7 +112,7 @@
 }
 
 .skill-header .meta a {
-  color: var(--c-accent);
+  color: var(--color-accent);
   text-decoration: none;
   transition: opacity 0.2s ease;
 }
@@ -124,22 +124,22 @@
 .skill-description {
   font-size: 0.9375rem;
   line-height: 1.6;
-  margin-bottom: var(--s-md);
-  color: var(--c-charcoal);
+  margin-bottom: var(--spacing-md);
+  color: var(--color-charcoal);
   max-width: 50ch;
 }
 
 /* Skill Sections (Focus Areas, Relationships) */
 .skill-section {
-  margin-bottom: var(--s-lg);
+  margin-bottom: var(--spacing-lg);
 }
 
 .skill-section h4 {
   font-family: var(--font-body);
   font-size: 0.75rem;
   font-weight: 600;
-  margin: 0 0 var(--s-sm) 0;
-  color: var(--c-ash);
+  margin: 0 0 var(--spacing-sm) 0;
+  color: var(--color-ash);
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
@@ -148,26 +148,26 @@
 .focus-areas-compact {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--s-xs);
+  gap: var(--spacing-xs);
 }
 
 .focus-area-tag {
   display: inline-flex;
   align-items: center;
-  gap: var(--s-xs);
-  padding: var(--s-xs) var(--s-sm);
-  background: var(--c-paper);
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: var(--color-paper);
   border-radius: 3px;
   font-size: 0.8125rem;
 }
 
 .focus-area-tag strong {
-  color: var(--c-text);
+  color: var(--color-text);
   font-weight: 500;
 }
 
 .focus-area-tag span {
-  color: var(--c-ash);
+  color: var(--color-ash);
   font-size: 0.75rem;
 }
 
@@ -175,15 +175,15 @@
 .relationship-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--s-xs);
+  gap: var(--spacing-xs);
 }
 
 .relationship-tag {
   display: inline-block;
-  padding: var(--s-xs) var(--s-sm);
-  background: var(--c-paper);
-  color: var(--c-text);
-  border: 1px solid color-mix(in oklch, var(--c-accent) 30%, transparent);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: var(--color-paper);
+  color: var(--color-text);
+  border: 1px solid color-mix(in oklch, var(--color-accent) 30%, transparent);
   font-size: 0.8125rem;
   font-weight: 400;
   border-radius: 2px;
@@ -192,36 +192,36 @@
 }
 
 .relationship-tag:hover {
-  border-color: var(--c-accent);
-  color: var(--c-accent);
-  background: color-mix(in oklch, var(--c-accent) 5%, var(--c-paper));
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: color-mix(in oklch, var(--color-accent) 5%, var(--color-paper));
 }
 
 /* Skill Downloads (Icons) */
 .skill-downloads {
   display: flex;
   align-items: center;
-  gap: var(--s-sm);
-  padding-top: var(--s-md);
-  margin-top: var(--s-md);
-  border-top: 1px solid var(--c-mist);
+  gap: var(--spacing-sm);
+  padding-top: var(--spacing-md);
+  margin-top: var(--spacing-md);
+  border-top: 1px solid var(--color-mist);
 }
 
 .downloads-label {
   font-size: 0.75rem;
-  color: var(--c-ash);
-  margin-right: var(--s-xs);
+  color: var(--color-ash);
+  margin-right: var(--spacing-xs);
 }
 
 .download-icon {
   display: flex;
   align-items: center;
-  gap: var(--s-xs);
+  gap: var(--spacing-xs);
   padding: 6px 10px;
   border-radius: 4px;
   background: transparent;
-  border: 1px solid var(--c-mist);
-  color: var(--c-ash);
+  border: 1px solid var(--color-mist);
+  color: var(--color-ash);
   text-decoration: none;
   font-size: 0.75rem;
   transition: all 0.15s ease;
@@ -234,16 +234,16 @@
 }
 
 .download-icon:hover {
-  color: var(--c-accent);
-  border-color: var(--c-accent);
-  background: color-mix(in oklch, var(--c-accent) 5%, transparent);
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  background: color-mix(in oklch, var(--color-accent) 5%, transparent);
 }
 
 /* Command Detail Panel - mirrors skills showcase */
 .command-detail-panel {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
-  gap: var(--s-lg);
+  gap: var(--spacing-lg);
   align-items: start;
   
   @media (max-width: 1100px) {
@@ -263,15 +263,15 @@
   font-family: 'Space Grotesk', monospace;
   font-size: 2rem;
   font-weight: 500;
-  margin: 0 0 var(--s-xs) 0;
-  color: var(--c-text);
+  margin: 0 0 var(--spacing-xs) 0;
+  color: var(--color-text);
 }
 
 .command-header .meta {
   display: flex;
-  gap: var(--s-sm);
+  gap: var(--spacing-sm);
   align-items: center;
-  color: var(--c-ash);
+  color: var(--color-ash);
   font-size: 0.8125rem;
   text-transform: uppercase;
   letter-spacing: 0.03em;
@@ -280,24 +280,24 @@
 .command-description {
   font-size: 1rem;
   line-height: 1.7;
-  color: var(--c-charcoal);
-  margin-bottom: var(--s-lg);
+  color: var(--color-charcoal);
+  margin-bottom: var(--spacing-lg);
 }
 
 /* Process Steps - Compact */
 .process-steps-compact {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--s-sm);
+  gap: var(--spacing-sm);
   counter-reset: step;
 }
 
 .process-step-compact {
   display: flex;
   align-items: center;
-  gap: var(--s-xs);
-  padding: var(--s-xs) var(--s-sm);
-  background: var(--c-paper);
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: var(--color-paper);
   border-radius: 3px;
   font-size: 0.8125rem;
 }
@@ -310,8 +310,8 @@
   justify-content: center;
   width: 20px;
   height: 20px;
-  background: var(--c-accent);
-  color: var(--c-paper);
+  background: var(--color-accent);
+  color: var(--color-paper);
   border-radius: 50%;
   font-size: 0.6875rem;
   font-weight: 600;
@@ -331,10 +331,10 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   padding: 2px 5px;
-  background: var(--c-mist);
-  color: var(--c-ash);
+  background: var(--color-mist);
+  color: var(--color-ash);
   border-radius: 2px;
-  margin-left: var(--s-xs);
+  margin-left: var(--spacing-xs);
   vertical-align: middle;
 }
 
@@ -344,13 +344,13 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: var(--s-2xl);
+  padding: var(--spacing-2xl);
   min-height: 300px;
 }
 
 .coming-soon-icon {
-  color: var(--c-mist);
-  margin-bottom: var(--s-lg);
+  color: var(--color-mist);
+  margin-bottom: var(--spacing-lg);
 }
 
 .coming-soon-showcase h3 {
@@ -358,20 +358,20 @@
   font-size: 1.75rem;
   font-weight: 300;
   font-style: italic;
-  margin: 0 0 var(--s-sm) 0;
-  color: var(--c-text);
+  margin: 0 0 var(--spacing-sm) 0;
+  color: var(--color-text);
 }
 
 .coming-soon-text {
   font-size: 1rem;
-  color: var(--c-accent);
+  color: var(--color-accent);
   font-weight: 500;
-  margin-bottom: var(--s-md);
+  margin-bottom: var(--spacing-md);
 }
 
 .coming-soon-showcase .skill-description {
   max-width: 50ch;
-  color: var(--c-ash);
+  color: var(--color-ash);
   font-size: 0.9375rem;
   line-height: 1.6;
 }

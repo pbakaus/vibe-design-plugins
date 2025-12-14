@@ -21,6 +21,11 @@
     "ux"
   ],
   "author": "Paul Bakaus",
-  "license": "SEE LICENSE FILE"
+  "license": "SEE LICENSE FILE",
+  "devDependencies": {
+    "bun-plugin-tailwind": "^0.1.2"
+  },
+  "dependencies": {
+    "tailwindcss": "^4.1.18"
+  }
 }
-

@@ -2,13 +2,13 @@
 // COMMANDS - Rendering, workflow, and category logic
 // ============================================
 
-import { renderCommandDemo } from "./command-demos.js";
 import {
 	commandCategories,
 	commandProcessSteps,
 	commandRelationships,
 	readyCommands,
 } from "./data.js";
+import { renderCommandDemo } from "./demo-renderer.js";
 import { setupCommandDemoToggles } from "./demo-toggles.js";
 
 let currentCommand = null;
@@ -25,28 +25,43 @@ export function renderWorkflowDiagram(allCommands, onSelectCommand) {
 
 	// Group commands by category for the sidebar
 	const groups = {
-		production: ['audit', 'normalize', 'adapt', 'clarify', 'harden', 'optimize', 'polish'],
-		aesthetic: ['bolder', 'quieter', 'animate', 'delight', 'colorize', 'simplify'],
-		system: ['extract', 'onboard']
+		production: [
+			"audit",
+			"normalize",
+			"adapt",
+			"clarify",
+			"harden",
+			"optimize",
+			"polish",
+		],
+		aesthetic: [
+			"bolder",
+			"quieter",
+			"animate",
+			"delight",
+			"colorize",
+			"simplify",
+		],
+		system: ["extract", "onboard"],
 	};
 
 	const renderNavItem = (id) => {
 		const ready = isCommandReady(id);
-		return `<button class="command-nav-item ${!ready ? 'coming-soon' : ''}" data-command="${id}">/${id}${!ready ? '<span class="coming-soon-badge">Soon</span>' : ''}</button>`;
+		return `<button class="command-nav-item ${!ready ? "coming-soon" : ""}" data-command="${id}">/${id}${!ready ? '<span class="coming-soon-badge">Soon</span>' : ""}</button>`;
 	};
 
 	container.innerHTML = `
     <div class="command-nav-group">
       <span class="command-nav-label">Production</span>
-      ${groups.production.map(renderNavItem).join('')}
+      ${groups.production.map(renderNavItem).join("")}
     </div>
     <div class="command-nav-group">
       <span class="command-nav-label">Aesthetic</span>
-      ${groups.aesthetic.map(renderNavItem).join('')}
+      ${groups.aesthetic.map(renderNavItem).join("")}
     </div>
     <div class="command-nav-group">
       <span class="command-nav-label">System</span>
-      ${groups.system.map(renderNavItem).join('')}
+      ${groups.system.map(renderNavItem).join("")}
     </div>
   `;
 

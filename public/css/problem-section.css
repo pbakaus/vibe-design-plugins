@@ -4,19 +4,19 @@
  */
 
 .problem-section {
-  padding: var(--s-2xl) 0;
-  border-top: 1px solid var(--c-mist);
+  padding: var(--spacing-2xl) 0;
+  border-top: 1px solid var(--color-mist);
 }
 
 .problem-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--s-2xl);
+  gap: var(--spacing-2xl);
   align-items: center;
   
   @media (max-width: 968px) {
     grid-template-columns: 1fr;
-    gap: var(--s-xl);
+    gap: var(--spacing-xl);
   }
 }
 
@@ -25,13 +25,13 @@
 }
 
 .problem-content .section-title {
-  margin-bottom: var(--s-md);
+  margin-bottom: var(--spacing-md);
 }
 
 .problem-lead {
   font-size: 1.25rem;
   line-height: 1.6;
-  color: var(--c-charcoal);
+  color: var(--color-charcoal);
 }
 
 /* AI Slop Demo - Deliberately generic design */
@@ -124,10 +124,10 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--c-accent);
-  background: var(--c-paper);
+  color: var(--color-accent);
+  background: var(--color-paper);
   padding: 4px 8px;
-  border: 1px solid var(--c-accent);
+  border: 1px solid var(--color-accent);
   border-radius: 2px;
   white-space: nowrap;
   opacity: 0;

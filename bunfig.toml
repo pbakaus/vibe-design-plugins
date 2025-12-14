@@ -1,0 +1,3 @@
+# Configure Tailwind CSS plugin for Bun's static server and bundler
+[serve.static]
+plugins = ["bun-plugin-tailwind"]

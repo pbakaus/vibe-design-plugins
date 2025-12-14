@@ -2,9 +2,9 @@
 // SKILLS - Rendering and selection logic
 // ============================================
 
-import { skillFocusAreas, readySkills } from "./data.js";
+import { readySkills, skillFocusAreas } from "./data.js";
+import { renderSkillDemo, setupDemoTabs } from "./demo-renderer.js";
 import { setupDemoToggles } from "./demo-toggles.js";
-import { renderSkillDemo, setupDemoTabs } from "./skill-demos.js";
 
 let currentSkill = null;
 
@@ -39,9 +39,9 @@ export function renderSkillsNav(skills, onSelect) {
 	nav.innerHTML = filteredSkills
 		.map(
 			(skill) => `
-    <button class="skill-nav-item ${!isSkillReady(skill.id) ? 'coming-soon' : ''}" data-id="${skill.id}">
+    <button class="skill-nav-item ${!isSkillReady(skill.id) ? "coming-soon" : ""}" data-id="${skill.id}">
       ${formatSkillName(skill.id)}
-      ${!isSkillReady(skill.id) ? '<span class="coming-soon-badge">Soon</span>' : ''}
+      ${!isSkillReady(skill.id) ? '<span class="coming-soon-badge">Soon</span>' : ""}
     </button>
   `,
 		)

@@ -14,7 +14,7 @@
   display: flex;
   flex-direction: column;
   gap: 2px;
-  margin-bottom: var(--s-sm);
+  margin-bottom: var(--spacing-sm);
   
   &:last-child {
     margin-bottom: 0;
@@ -26,10 +26,10 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--c-ash);
-  padding: var(--s-xs) var(--s-md);
+  color: var(--color-ash);
+  padding: var(--spacing-xs) var(--spacing-md);
   margin-bottom: 2px;
-  margin-top: var(--s-xs);
+  margin-top: var(--spacing-xs);
   
   &:first-child {
     margin-top: 0;
@@ -37,11 +37,11 @@
 }
 
 .command-nav-item {
-  padding: var(--s-xs) var(--s-md);
+  padding: var(--spacing-xs) var(--spacing-md);
   background: transparent;
   border: none;
   border-left: 2px solid transparent;
-  color: var(--c-ash);
+  color: var(--color-ash);
   font-family: 'Space Grotesk', monospace;
   font-size: 0.875rem;
   font-weight: 400;
@@ -52,14 +52,14 @@
 }
 
 .command-nav-item:hover {
-  color: var(--c-text);
-  background: color-mix(in oklch, var(--c-paper) 85%, var(--c-accent));
+  color: var(--color-text);
+  background: color-mix(in oklch, var(--color-paper) 85%, var(--color-accent));
 }
 
 .command-nav-item.active {
-  color: var(--c-accent);
-  border-left-color: var(--c-accent);
-  background: color-mix(in oklch, var(--c-accent) 5%, var(--c-paper));
+  color: var(--color-accent);
+  border-left-color: var(--color-accent);
+  background: color-mix(in oklch, var(--color-accent) 5%, var(--color-paper));
   font-weight: 500;
 }
 
@@ -67,30 +67,30 @@
   .commands-nav {
     flex-direction: row;
     flex-wrap: wrap;
-    gap: var(--s-xs);
+    gap: var(--spacing-xs);
   }
   
   .command-nav-group {
     flex-direction: row;
     flex-wrap: wrap;
-    gap: var(--s-xs);
-    margin-bottom: var(--s-sm);
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
   }
   
   .command-nav-label {
     width: 100%;
-    padding: var(--s-xs) 0;
+    padding: var(--spacing-xs) 0;
     margin-top: 0;
   }
   
   .command-nav-item {
     border-left: none;
     border-bottom: 2px solid transparent;
-    padding: var(--s-xs) var(--s-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
   }
   
   .command-nav-item.active {
-    border-bottom-color: var(--c-accent);
+    border-bottom-color: var(--color-accent);
   }
 }
 
@@ -98,7 +98,7 @@
 .workflow-row {
   display: flex;
   align-items: center;
-  gap: var(--s-md);
+  gap: var(--spacing-md);
   flex-wrap: wrap;
 }
 
@@ -107,20 +107,20 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--c-ash);
+  color: var(--color-ash);
   width: 120px;
   flex-shrink: 0;
   
   @media (max-width: 768px) {
     width: 100%;
-    margin-bottom: var(--s-xs);
+    margin-bottom: var(--spacing-xs);
   }
 }
 
 .workflow-row-content {
   display: flex;
   align-items: center;
-  gap: var(--s-sm);
+  gap: var(--spacing-sm);
   flex-wrap: wrap;
 }
 
@@ -130,35 +130,35 @@
   align-items: center;
   padding: 4px 10px;
   background: transparent;
-  border: 1px solid var(--c-mist);
+  border: 1px solid var(--color-mist);
   border-radius: 3px;
   font-family: 'Space Grotesk', monospace;
   font-size: 0.8125rem;
   font-weight: 500;
-  color: var(--c-charcoal);
+  color: var(--color-charcoal);
   cursor: pointer;
   transition: all var(--duration-fast) var(--ease-out);
 }
 
 .workflow-node:hover {
-  border-color: var(--c-accent);
-  color: var(--c-accent);
-  background: color-mix(in oklch, var(--c-accent) 5%, transparent);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: color-mix(in oklch, var(--color-accent) 5%, transparent);
 }
 
 .workflow-node.active {
-  background: var(--c-accent);
-  border-color: var(--c-accent);
-  color: var(--c-paper);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-paper);
 }
 
 /* Workflow Arrow */
 .workflow-arrow {
   display: flex;
   align-items: center;
-  color: var(--c-ash);
+  color: var(--color-ash);
   font-size: 1.25rem;
-  padding: 0 var(--s-xs);
+  padding: 0 var(--spacing-xs);
 }
 
 .workflow-arrow-bidirectional::before {
@@ -178,17 +178,17 @@
 .workflow-group {
   display: flex;
   align-items: center;
-  gap: var(--s-sm);
-  padding: var(--s-sm);
-  background: color-mix(in oklch, var(--c-paper) 50%, transparent);
-  border: 1px dashed var(--c-mist);
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  background: color-mix(in oklch, var(--color-paper) 50%, transparent);
+  border: 1px dashed var(--color-mist);
   border-radius: 4px;
 }
 
 .workflow-group-label {
   font-size: 0.6875rem;
   font-weight: 500;
-  color: var(--c-ash);
+  color: var(--color-ash);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   writing-mode: vertical-lr;
@@ -198,7 +198,7 @@
     writing-mode: horizontal-tb;
     transform: none;
     width: 100%;
-    margin-bottom: var(--s-xs);
+    margin-bottom: var(--spacing-xs);
   }
 }
 
@@ -206,20 +206,20 @@
 .workflow-production {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: var(--s-md);
+  gap: var(--spacing-md);
   align-items: start;
 }
 
 .workflow-production-stages {
   display: flex;
   flex-direction: column;
-  gap: var(--s-sm);
+  gap: var(--spacing-sm);
 }
 
 .workflow-stage {
   display: flex;
   align-items: center;
-  gap: var(--s-sm);
+  gap: var(--spacing-sm);
 }
 
 .workflow-stage-label {
@@ -227,21 +227,21 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--c-ash);
+  color: var(--color-ash);
   width: 80px;
 }
 
 .workflow-stage-nodes {
   display: flex;
-  gap: var(--s-xs);
+  gap: var(--spacing-xs);
   flex-wrap: wrap;
 }
 
 /* Aesthetic Adjustments Section */
 .workflow-aesthetics {
-  border-top: 1px solid var(--c-mist);
-  padding-top: var(--s-lg);
-  margin-top: var(--s-sm);
+  border-top: 1px solid var(--color-mist);
+  padding-top: var(--spacing-lg);
+  margin-top: var(--spacing-sm);
 }
 
 .workflow-aesthetics-title {
@@ -249,26 +249,26 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--c-ash);
-  margin-bottom: var(--s-md);
+  color: var(--color-ash);
+  margin-bottom: var(--spacing-md);
 }
 
 .workflow-pairs {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--s-lg);
+  gap: var(--spacing-lg);
 }
 
 .workflow-pair {
   display: flex;
   align-items: center;
-  gap: var(--s-sm);
+  gap: var(--spacing-sm);
 }
 
 /* Responsive */
 @media (max-width: 768px) {
   .workflow-container {
-    padding: var(--s-md);
+    padding: var(--spacing-md);
   }
   
   .workflow-production {
@@ -282,15 +282,15 @@
   
   .workflow-stage-label {
     width: auto;
-    margin-bottom: var(--s-xs);
+    margin-bottom: var(--spacing-xs);
   }
 }
 
 /* Command Card in Grid */
 .command-card {
-  padding: var(--s-sm) var(--s-md);
-  background: var(--c-paper);
-  border: 1px solid var(--c-mist);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-paper);
+  border: 1px solid var(--color-mist);
   border-radius: 3px;
   cursor: pointer;
   transition: all var(--duration-fast) var(--ease-out);
@@ -298,27 +298,27 @@
 }
 
 .command-card:hover {
-  border-color: var(--c-accent);
+  border-color: var(--color-accent);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px color-mix(in oklch, var(--c-accent) 10%, transparent);
+  box-shadow: 0 4px 12px color-mix(in oklch, var(--color-accent) 10%, transparent);
 }
 
 .command-card.active {
-  border-color: var(--c-accent);
-  background: color-mix(in oklch, var(--c-accent) 5%, var(--c-paper));
+  border-color: var(--color-accent);
+  background: color-mix(in oklch, var(--color-accent) 5%, var(--color-paper));
 }
 
 .command-card-name {
   font-family: 'Space Grotesk', monospace;
   font-size: 0.9375rem;
   font-weight: 500;
-  color: var(--c-text);
+  color: var(--color-text);
   margin-bottom: 2px;
 }
 
 .command-card-desc {
   font-size: 0.75rem;
-  color: var(--c-ash);
+  color: var(--color-ash);
   line-height: 1.4;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -334,9 +334,9 @@
   text-transform: uppercase;
   letter-spacing: 0.08em;
   padding: 2px 6px;
-  background: var(--c-mist);
-  color: var(--c-ash);
+  background: var(--color-mist);
+  color: var(--color-ash);
   border-radius: 2px;
-  margin-top: var(--s-xs);
+  margin-top: var(--spacing-xs);
 }
 

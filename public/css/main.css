@@ -1,29 +1,377 @@
 /* 
- * impeccable.style — Modular CSS Architecture
+ * impeccable.style — Tailwind CSS v4 + Custom Components
  * 
- * Uses Bun's CSS bundler for:
- * - CSS nesting (no preprocessor needed)
- * - OKLCH colors with automatic fallbacks
- * - Automatic bundling via @import
- * 
- * Structure:
- * - tokens.css: Design system (colors, spacing, typography)
- * - reset.css: Modern baseline
- * - animations.css: Keyframes & utilities
- * - layout.css: Grid & section primitives
- * - hero/intro/buttons/cards/footer.css: Component styles
+ * Architecture:
+ * - Tailwind v4 with custom theme tokens
+ * - Custom components for complex UI patterns
+ * - Minimal CSS for what Tailwind can't express
  */
 
-@import "./tokens.css";
-@import "./reset.css";
-@import "./animations.css";
-@import "./layout.css";
-@import "./hero.css";
-@import "./buttons.css";
-@import "./cards.css";
-@import "./gallery.css";
+@import "tailwindcss";
+
+/* ============================================
+   TAILWIND THEME - Static Design Tokens
+   ============================================ */
+
+@theme {
+  /* Typography */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Instrument Sans', system-ui, sans-serif;
+  --font-mono: 'Space Grotesk', monospace;
+  
+  /* Spacing Scale */
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 48px;
+  --spacing-xl: 80px;
+  --spacing-2xl: 128px;
+  --spacing-3xl: 192px;
+  
+  /* Width */
+  --width-max: 1280px;
+  --width-content: 840px;
+  
+  /* Animation */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 0.2s;
+  --duration-base: 0.3s;
+  --duration-slow: 0.6s;
+  --duration-slower: 0.8s;
+  --duration-slowest: 1.2s;
+}
+
+/* ============================================
+   COLOR TOKENS - Light/Dark Mode via CSS
+   ============================================ */
+
+:root {
+  /* Colors - Light Mode */
+  --color-ink: oklch(10% 0 0);
+  --color-text: oklch(10% 0 0);
+  --color-paper: oklch(98% 0 0);
+  --color-charcoal: oklch(25% 0 0);
+  --color-ash: oklch(55% 0 0);
+  --color-mist: oklch(92% 0 0);
+  --color-bg: oklch(96% 0.005 350);
+  --color-accent: oklch(60% 0.25 350);
+  --color-accent-hover: oklch(52% 0.25 350);
+  --color-accent-dim: oklch(60% 0.25 350 / 0.15);
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-ink: oklch(98% 0 0);
+    --color-text: oklch(98% 0 0);
+    --color-paper: oklch(10% 0 0);
+    --color-charcoal: oklch(92% 0 0);
+    --color-ash: oklch(65% 0 0);
+    --color-mist: oklch(20% 0 0);
+    --color-bg: oklch(12% 0.005 350);
+    --color-accent: oklch(68% 0.23 350);
+    --color-accent-hover: oklch(76% 0.23 350);
+  }
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  background: var(--color-paper);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+a:hover {
+  opacity: 0.7;
+}
+
+/* ============================================
+   SECTION TITLE - With accent underline
+   ============================================ */
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+  position: relative;
+  display: block;
+  padding-bottom: var(--spacing-sm);
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -0.25em;
+  left: 0;
+  width: 80px;
+  height: 2px;
+  background: var(--color-accent);
+}
+
+/* ============================================
+   BACKGROUND ATMOSPHERE
+   ============================================ */
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, var(--color-accent-dim) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, var(--color-accent-dim) 0%, transparent 50%);
+  opacity: 0;
+  z-index: -1;
+  animation: fadeInBg var(--duration-slowest) var(--ease-out) 0.3s forwards;
+  pointer-events: none;
+}
+
+/* ============================================
+   HERO DECORATIONS
+   ============================================ */
+
+.deco-line {
+  position: absolute;
+  width: 160px;
+  height: 2px;
+  background: var(--color-accent);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-25deg);
+  animation: expandLine 1s var(--ease-out) 0.6s both;
+}
+
+.deco-circle {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border: 2px solid var(--color-accent);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: drawCircle 1s var(--ease-out) 0.8s both;
+  opacity: 0.3;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 2rem;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: none;
+  cursor: pointer;
+  transition: all var(--duration-base) var(--ease-out);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--color-accent);
+  color: var(--color-paper);
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-ink);
+  transform: translateY(100%);
+  transition: transform var(--duration-base) var(--ease-out);
+  z-index: -1;
+}
+
+.btn-primary:hover::before {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-ink);
+  border: 1px solid var(--color-ink);
+}
+
+.btn-secondary:hover {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+/* ============================================
+   CARD COMPONENTS
+   ============================================ */
+
+.card-inner {
+  height: 100%;
+  padding: var(--spacing-lg);
+  background: var(--color-paper);
+  border: 1px solid var(--color-mist);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  transition: all var(--duration-base) var(--ease-out);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-inner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-accent);
+  transform: translateX(-100%);
+  transition: transform 0.4s var(--ease-out);
+}
+
+.card-inner:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-4px);
+}
+
+.card-inner:hover::before {
+  transform: translateX(0);
+}
+
+.badge {
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.25em 0.625em;
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  border-radius: 2px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ============================================
+   SOLUTION CARDS
+   ============================================ */
+
+.solution-card {
+  padding: var(--spacing-lg);
+  background: var(--color-paper);
+  border-left: 3px solid var(--color-accent);
+  transition: all var(--duration-base) var(--ease-out);
+}
+
+.solution-card:hover {
+  background: color-mix(in oklch, var(--color-paper) 90%, var(--color-accent));
+  transform: translateX(4px);
+}
+
+.solution-card code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: color-mix(in oklch, var(--color-accent) 15%, transparent);
+  color: var(--color-accent);
+  padding: 0.125em 0.375em;
+  border-radius: 3px;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes fadeInBg {
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes expandLine {
+  from { width: 0; }
+}
+
+@keyframes drawCircle {
+  from {
+    opacity: 0;
+    scale: 0;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+[data-animate] {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+[data-animate].animated {
+  animation: fadeInUp var(--duration-slow) var(--ease-out) both;
+}
+
+/* Hero animations */
+.hero-content {
+  animation: slideInLeft var(--duration-slower) var(--ease-out) 0.1s both;
+}
+
+.hero-decoration {
+  animation: slideInRight var(--duration-slower) var(--ease-out) 0.3s both;
+}
+
+/* ============================================
+   IMPORTS - Complex components that need custom CSS
+   ============================================ */
+
 @import "./problem-section.css";
-@import "./solution-section.css";
 @import "./skill-demos.css";
+@import "./gallery.css";
 @import "./workflow.css";
-@import "./footer.css";

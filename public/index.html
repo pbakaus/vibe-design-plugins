@@ -7,37 +7,38 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Instrument+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tailwindcss" />
   <link rel="stylesheet" href="./css/main.css">
 </head>
-<body>
+<body class="min-h-screen overflow-x-hidden leading-relaxed">
   <!-- 1. HERO - Hook with the problem statement -->
-  <header class="hero">
-    <div class="hero-grid">
+  <header class="min-h-[85vh] flex items-center relative py-32 px-12 overflow-hidden max-md:min-h-[70vh] max-md:py-20 max-md:px-6">
+    <div class="max-w-max mx-auto grid grid-cols-[1fr_auto] gap-32 items-center w-full relative max-md:grid-cols-1 max-md:gap-20">
       <div class="hero-content">
-        <h1 class="title">
-          <span class="title-main">Impeccable style</span>
-          <span class="title-sub">made easy</span>
+        <h1 class="font-display text-[clamp(3rem,8vw,7rem)] font-light leading-[0.9] mb-12 flex flex-col max-md:text-[clamp(2.5rem,12vw,4rem)]">
+          <span class="font-normal tracking-tight">Impeccable style</span>
+          <span class="font-light italic text-accent tracking-tight">made easy</span>
         </h1>
-        <p class="tagline">Your LLM can design beautiful interfaces.<br>It just needs to know what to ask for.</p>
-        <p class="providers">Works with Cursor · Claude Code · Gemini CLI · Codex CLI</p>
+        <p class="text-[clamp(1.125rem,2vw,1.5rem)] leading-snug text-charcoal mb-6 max-w-[32ch]">Your LLM can design beautiful interfaces.<br>It just needs to know what to ask for.</p>
+        <p class="text-sm text-ash uppercase tracking-widest font-medium">Works with Cursor · Claude Code · Gemini CLI · Codex CLI</p>
       </div>
-      <div class="hero-decoration" aria-hidden="true">
+      <div class="hero-decoration w-60 h-60 relative max-md:hidden" aria-hidden="true">
         <div class="deco-line"></div>
         <div class="deco-circle"></div>
       </div>
     </div>
   </header>
 
-  <main class="container">
+  <main class="max-w-max mx-auto px-12 max-sm:px-6">
     <!-- 2. THE PROBLEM - Show the "AI slop" aesthetic -->
-    <section class="problem-section">
-      <div class="problem-grid">
-        <div class="problem-content">
-          <h2 class="section-title">The Problem</h2>
-          <p class="problem-lead">LLMs are biased toward safe, generic design choices. Without guidance, you get the same predictable aesthetic every time.</p>
+    <section class="problem-section py-32 border-t border-mist">
+      <div class="problem-grid grid grid-cols-2 gap-32 items-center max-lg:grid-cols-1 max-lg:gap-20">
+        <div class="max-w-md">
+          <h2 class="section-title mb-6">The Problem</h2>
+          <p class="text-xl leading-relaxed text-charcoal">LLMs are biased toward safe, generic design choices. Without guidance, you get the same predictable aesthetic every time.</p>
         </div>
-        <div class="problem-showcase">
-          <div class="ai-slop-demo">
+        <div class="problem-showcase flex justify-center">
+          <div class="ai-slop-demo relative max-w-sm w-full">
             <div class="slop-card">
               <div class="slop-header">
                 <div class="slop-avatar"></div>
@@ -61,118 +62,118 @@
     </section>
 
     <!-- 3. THE SOLUTION - Brief explanation -->
-    <section class="solution-section">
-      <div class="solution-grid">
-        <div class="solution-content">
-          <h2 class="section-title">The Solution</h2>
-          <p class="solution-lead">Teach your AI assistant the language of design. <strong>Skills</strong> provide deep design knowledge. <strong>Commands</strong> give you precise control over the creative process.</p>
+    <section class="py-32 border-t border-mist">
+      <div class="grid gap-20">
+        <div class="max-w-2xl">
+          <h2 class="section-title mb-6">The Solution</h2>
+          <p class="text-[1.375rem] leading-relaxed text-charcoal">Teach your AI assistant the language of design. <strong class="text-ink font-semibold">Skills</strong> provide deep design knowledge. <strong class="text-ink font-semibold">Commands</strong> give you precise control over the creative process.</p>
         </div>
-        <div class="solution-cards">
+        <div class="grid grid-cols-2 gap-12 max-sm:grid-cols-1">
           <div class="solution-card">
-            <div class="solution-icon">
+            <div class="w-12 h-12 flex items-center justify-center mb-6 text-accent">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <path d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/>
               </svg>
             </div>
-            <h3>8 Skills</h3>
-            <p>Deep knowledge in typography, color, motion, spatial design, and more. The AI learns <em>how</em> to think about design.</p>
+            <h3 class="font-display text-3xl font-normal mb-4">8 Skills</h3>
+            <p class="text-base leading-relaxed text-ash">Deep knowledge in typography, color, motion, spatial design, and more. The AI learns <em class="italic text-charcoal">how</em> to think about design.</p>
           </div>
           <div class="solution-card">
-            <div class="solution-icon">
+            <div class="w-12 h-12 flex items-center justify-center mb-6 text-accent">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <path d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z"/>
               </svg>
             </div>
-            <h3>15 Commands</h3>
-            <p>Precise actions like <code>/bolder</code>, <code>/animate</code>, <code>/audit</code>. Steer the AI through iterative design refinement.</p>
+            <h3 class="font-display text-3xl font-normal mb-4">15 Commands</h3>
+            <p class="text-base leading-relaxed text-ash">Precise actions like <code>/bolder</code>, <code>/animate</code>, <code>/audit</code>. Steer the AI through iterative design refinement.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- 4. SKILLS SHOWCASE - Interactive demos -->
-    <section class="skills-section" id="skills-section">
-      <div class="section-header-sticky">
-        <h2 class="section-title">Skills</h2>
-        <p class="section-subtitle">Design knowledge that transforms AI output</p>
+    <section class="skills-section py-20 border-t border-mist" id="skills-section">
+      <div class="mb-12">
+        <h2 class="section-title mb-4">Skills</h2>
+        <p class="text-lg text-ash mt-6 max-w-[50ch]">Design knowledge that transforms AI output</p>
       </div>
-      <div class="skills-layout">
-        <nav class="skills-nav" id="skills-nav">
-          <div class="loading">Loading...</div>
+      <div class="skills-layout grid grid-cols-[180px_1fr] gap-12 items-start max-lg:grid-cols-1 max-lg:gap-6">
+        <nav class="skills-nav flex flex-col gap-0.5 max-lg:flex-row max-lg:flex-wrap max-lg:gap-2" id="skills-nav">
+          <div class="py-20 text-center text-ash italic">Loading...</div>
         </nav>
         <div class="skills-showcase" id="skills-detail">
-          <div class="loading">Select a skill to see it in action</div>
+          <div class="py-20 text-center text-ash italic">Select a skill to see it in action</div>
         </div>
       </div>
     </section>
 
     <!-- 5. COMMANDS - Sidebar nav + details (mirrors skills layout) -->
-    <section class="commands-section" id="commands-section">
-      <div class="section-header-sticky">
-        <h2 class="section-title">Commands</h2>
-        <p class="section-subtitle">Precise control over the design process</p>
+    <section class="commands-section py-20 border-t border-mist" id="commands-section">
+      <div class="mb-12">
+        <h2 class="section-title mb-4">Commands</h2>
+        <p class="text-lg text-ash mt-6 max-w-[50ch]">Precise control over the design process</p>
       </div>
       
-      <div class="commands-layout">
+      <div class="commands-layout grid grid-cols-[180px_1fr] gap-12 items-start max-lg:grid-cols-1 max-lg:gap-6">
         <!-- Commands nav (left sidebar) -->
-        <nav class="commands-nav" id="workflow-diagram">
+        <nav class="commands-nav flex flex-col gap-4 max-lg:flex-row max-lg:flex-wrap max-lg:gap-2" id="workflow-diagram">
           <!-- Will be rendered by JS -->
         </nav>
         
         <!-- Command detail (right side) -->
         <div class="commands-showcase" id="commands-detail">
-          <div class="loading">Select a command to view details</div>
+          <div class="py-20 text-center text-ash italic">Select a command to view details</div>
         </div>
       </div>
     </section>
 
     <!-- 6. DOWNLOAD BUNDLES - After demonstrating value -->
-    <section class="downloads-section" id="downloads">
-      <div class="downloads-header">
-        <h2 class="section-title">Get Started</h2>
-        <p class="downloads-lead">Download the complete bundle for your preferred AI tool. Extract into your project root and start creating.</p>
+    <section class="py-32 border-t border-mist" id="downloads">
+      <div class="mb-20 max-w-xl">
+        <h2 class="section-title mb-6">Get Started</h2>
+        <p class="text-lg leading-relaxed text-ash">Download the complete bundle for your preferred AI tool. Extract into your project root and start creating.</p>
       </div>
-      <div class="download-grid">
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-6 max-sm:grid-cols-1">
         <article class="download-card" data-animate>
           <div class="card-inner">
-            <div class="card-header">
-              <h3>Cursor</h3>
+            <div class="flex justify-between items-start gap-6">
+              <h3 class="font-display text-xl font-medium">Cursor</h3>
               <span class="badge">Rules + Commands</span>
             </div>
-            <p>Commands and rules for Cursor IDE. Works via appending, no frontmatter required.</p>
+            <p class="text-ash text-[0.9375rem] leading-relaxed flex-grow">Commands and rules for Cursor IDE. Works via appending, no frontmatter required.</p>
             <button class="btn btn-primary" data-bundle="cursor">Download</button>
           </div>
         </article>
 
         <article class="download-card" data-animate>
           <div class="card-inner">
-            <div class="card-header">
-              <h3>Claude Code</h3>
+            <div class="flex justify-between items-start gap-6">
+              <h3 class="font-display text-xl font-medium">Claude Code</h3>
               <span class="badge">Full Featured</span>
             </div>
-            <p>Complete YAML frontmatter with argument support. Follows Anthropic Skills specification.</p>
+            <p class="text-ash text-[0.9375rem] leading-relaxed flex-grow">Complete YAML frontmatter with argument support. Follows Anthropic Skills specification.</p>
             <button class="btn btn-primary" data-bundle="claude-code">Download</button>
           </div>
         </article>
 
         <article class="download-card" data-animate>
           <div class="card-inner">
-            <div class="card-header">
-              <h3>Gemini CLI</h3>
+            <div class="flex justify-between items-start gap-6">
+              <h3 class="font-display text-xl font-medium">Gemini CLI</h3>
               <span class="badge">TOML + Modular</span>
             </div>
-            <p>TOML-formatted commands with modular skill imports via GEMINI.md.</p>
+            <p class="text-ash text-[0.9375rem] leading-relaxed flex-grow">TOML-formatted commands with modular skill imports via GEMINI.md.</p>
             <button class="btn btn-primary" data-bundle="gemini">Download</button>
           </div>
         </article>
 
         <article class="download-card" data-animate>
           <div class="card-inner">
-            <div class="card-header">
-              <h3>Codex CLI</h3>
+            <div class="flex justify-between items-start gap-6">
+              <h3 class="font-display text-xl font-medium">Codex CLI</h3>
               <span class="badge">Prompts + Routing</span>
             </div>
-            <p>Custom prompt format with skill routing through AGENTS.md architecture.</p>
+            <p class="text-ash text-[0.9375rem] leading-relaxed flex-grow">Custom prompt format with skill routing through AGENTS.md architecture.</p>
             <button class="btn btn-primary" data-bundle="codex">Download</button>
           </div>
         </article>
@@ -180,19 +181,19 @@
     </section>
 
     <!-- 7. OPEN SOURCE -->
-    <section class="contribute">
-      <div class="contribute-content">
-        <h2>Open Source</h2>
-        <p>View the source, contribute skills and commands, or report issues on GitHub.</p>
+    <section class="py-32 border-t border-mist text-center">
+      <div class="max-w-md mx-auto flex flex-col items-center gap-6">
+        <h2 class="font-display text-[clamp(2rem,4vw,3rem)] font-semibold">Open Source</h2>
+        <p class="text-lg text-ash max-w-[42ch]">View the source, contribute skills and commands, or report issues on GitHub.</p>
         <a href="https://github.com/pbakaus/vibe-design-plugins" class="btn btn-secondary">View Repository</a>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="footer-content">
+  <footer class="border-t border-mist py-32 px-12 bg-paper">
+    <div class="max-w-max mx-auto flex justify-between items-center text-sm text-ash max-md:flex-col max-md:gap-4 max-md:text-center">
       <p>impeccable.style</p>
-      <p><a href="https://github.com/pbakaus/vibe-design-plugins">GitHub</a></p>
+      <p><a href="https://github.com/pbakaus/vibe-design-plugins" class="text-ink underline underline-offset-2">GitHub</a></p>
     </div>
   </footer>
 
