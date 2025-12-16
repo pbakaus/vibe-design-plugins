@@ -1399,59 +1399,46 @@ code {
 @import "./workflow.css";
 
 /* ============================================
-   BIAS GRID (Problem Section Enhancement)
+   BIAS TAGS (Compact Problem Section)
    ============================================ */
 
-.bias-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: var(--spacing-md);
-  margin-bottom: var(--spacing-xl);
+.bias-tags {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-lg);
 }
 
-.bias-item {
+.bias-tags-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-ash);
+}
+
+.bias-tags-list {
   display: flex;
-  align-items: flex-start;
-  gap: var(--spacing-sm);
-  padding: var(--spacing-md);
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-xs);
+}
+
+.bias-tag {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 6px 12px;
   background: var(--color-cream);
   border: 1px solid var(--color-mist);
-  border-left: 3px solid var(--color-accent);
+  color: var(--color-charcoal);
   transition: all var(--duration-fast) var(--ease-out);
 }
 
-.bias-item:hover {
+.bias-tag:hover {
   border-color: var(--color-accent);
-  transform: translateX(4px);
-}
-
-.bias-icon {
-  font-size: 1.25rem;
   color: var(--color-accent);
-  font-weight: 300;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.bias-content {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.bias-content strong {
-  font-size: 0.9375rem;
-  font-weight: 600;
-  color: var(--color-ink);
-}
-
-.bias-content span {
-  font-size: 0.8125rem;
-  color: var(--color-ash);
 }
 
 /* ============================================
