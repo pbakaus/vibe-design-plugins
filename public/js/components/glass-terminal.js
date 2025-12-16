@@ -1,5 +1,5 @@
 import { renderCommandDemo } from "../demo-renderer.js";
-import { setupCommandDemoToggles } from "../demo-toggles.js";
+import { initSplitCompare } from "../effects/split-compare.js";
 import { commandProcessSteps, commandCategories, commandRelationships } from "../data.js";
 
 export function initGlassTerminal() {
@@ -141,8 +141,22 @@ function setupScrollSpy(commands) {
     });
 }
 
+// Track current split instance and command for cleanup
+let currentSplitInstance = null;
+let currentCommandId = null;
+
 function updateTerminal(cmd, container, allCommands) {
     if (!cmd || !container) return;
+
+    // Skip if already showing this command
+    if (currentCommandId === cmd.id) return;
+    currentCommandId = cmd.id;
+
+    // Cleanup previous split instance
+    if (currentSplitInstance) {
+        currentSplitInstance.destroy();
+        currentSplitInstance = null;
+    }
 
     // Get process steps for this command (or use generic fallback)
     const steps = commandProcessSteps[cmd.id] || ['Analyze', 'Transform', 'Verify'];
@@ -156,6 +170,14 @@ function updateTerminal(cmd, container, allCommands) {
 <div class="terminal-preview command-demo-area">${renderCommandDemo(cmd.id)}</div>
 <div class="terminal-line terminal-cursor-line"><span class="terminal-prompt">➜</span><span class="terminal-cursor"></span></div>`;
 
-    // Re-bind toggles
-    setupCommandDemoToggles(allCommands, () => {});
+    // Initialize split-compare effect for the demo
+    const splitComparison = container.querySelector('.demo-split-comparison');
+    if (splitComparison) {
+        currentSplitInstance = initSplitCompare(splitComparison, {
+            defaultPosition: 50,
+            skewOffset: 8,
+            minPosition: 5,
+            maxPosition: 95
+        });
+    }
 }

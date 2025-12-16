@@ -30,30 +30,72 @@ async function loadContent() {
 		// Render commands (Glass Terminal)
 		renderTerminalLayout(allCommands);
 
-		// Render patterns and antipatterns
-		renderPatterns(patternsData.patterns, "patterns-grid", "pattern");
-		renderPatterns(patternsData.antipatterns, "antipatterns-grid", "antipattern");
+		// Render patterns with tabbed navigation
+		renderPatternsWithTabs(patternsData.patterns, patternsData.antipatterns);
 	} catch (error) {
 		console.error("Failed to load content:", error);
 	}
 }
 
-function renderPatterns(categories, containerId, classPrefix) {
-	const container = document.getElementById(containerId);
-	if (!container || !categories) return;
+function renderPatternsWithTabs(patterns, antipatterns) {
+	const container = document.getElementById("patterns-categories");
+	if (!container || !patterns || !antipatterns) return;
 
-	container.innerHTML = categories
-		.map(
-			(category) => `
-		<div class="${classPrefix}-category">
-			<h3 class="${classPrefix}-category-title">${category.name}</h3>
-			<ul class="${classPrefix}-list">
-				${category.items.map((item) => `<li>${item}</li>`).join("")}
-			</ul>
-		</div>
-	`,
-		)
+	// Create a map of antipatterns by category name
+	const antipatternMap = {};
+	antipatterns.forEach(cat => {
+		antipatternMap[cat.name] = cat.items;
+	});
+
+	// Build tabs
+	const tabsHTML = patterns
+		.map((category, i) => `<button class="pattern-tab${i === 0 ? ' active' : ''}" data-tab="${category.name}">${category.name}</button>`)
 		.join("");
+
+	// Build panels
+	const panelsHTML = patterns
+		.map((category, i) => {
+			const antiItems = antipatternMap[category.name] || [];
+			return `
+		<div class="pattern-panel${i === 0 ? ' active' : ''}" data-panel="${category.name}">
+			<div class="pattern-columns">
+				<div class="pattern-column pattern-column--anti">
+					<span class="pattern-column-label">Don't</span>
+					<ul class="pattern-list">
+						${antiItems.map((item) => `<li class="pattern-item pattern-item--anti">${item}</li>`).join("")}
+					</ul>
+				</div>
+				<div class="pattern-column pattern-column--do">
+					<span class="pattern-column-label">Do</span>
+					<ul class="pattern-list">
+						${category.items.map((item) => `<li class="pattern-item pattern-item--do">${item}</li>`).join("")}
+					</ul>
+				</div>
+			</div>
+		</div>
+	`;
+		})
+		.join("");
+
+	container.innerHTML = `
+		<div class="pattern-tabs">${tabsHTML}</div>
+		<div class="pattern-panels">${panelsHTML}</div>
+	`;
+
+	// Tab click handling
+	container.querySelectorAll('.pattern-tab').forEach(tab => {
+		tab.addEventListener('click', () => {
+			const tabName = tab.dataset.tab;
+
+			// Update active tab
+			container.querySelectorAll('.pattern-tab').forEach(t => t.classList.remove('active'));
+			tab.classList.add('active');
+
+			// Update active panel
+			container.querySelectorAll('.pattern-panel').forEach(p => p.classList.remove('active'));
+			container.querySelector(`[data-panel="${tabName}"]`).classList.add('active');
+		});
+	});
 }
 
 // ============================================

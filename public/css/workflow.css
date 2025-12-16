@@ -243,89 +243,89 @@
   margin-top: var(--spacing-sm) !important;
 }
 
-.terminal-preview .demo-container {
+/* Demo Split Comparison in Terminal */
+.terminal-preview .demo-split-comparison {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
-.terminal-preview .demo-header {
-  flex-shrink: 0;
-  padding: 0;
+.terminal-preview .demo-split-comparison .split-container {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  cursor: ew-resize;
+  user-select: none;
+  background: var(--color-cream);
 }
 
-.terminal-preview .demo-viewport {
-  flex: 1;
+.terminal-preview .demo-split-comparison .split-before,
+.terminal-preview .demo-split-comparison .split-after {
+  position: absolute;
+  inset: 0;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   padding: var(--spacing-md);
-  min-height: 0;
-  max-height: 320px;
-  overflow: auto;
-  overscroll-behavior: contain;
 }
 
-.terminal-preview .demo-viewport > * {
-  margin-block: auto; /* Center vertically when content is shorter than container */
+.terminal-preview .demo-split-comparison .split-before {
+  z-index: 1;
+  background: var(--color-cream);
 }
 
-.terminal-preview .demo-caption {
+.terminal-preview .demo-split-comparison .split-after {
+  z-index: 2;
+  background: var(--color-paper);
+  clip-path: polygon(58% 0%, 100% 0%, 100% 100%, 42% 100%);
+}
+
+.terminal-preview .demo-split-comparison .split-content {
+  width: 100%;
+  max-width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.terminal-preview .demo-split-comparison .split-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: var(--color-accent);
+  transform: translateX(-50%) skewX(-10deg);
+  pointer-events: none;
+  z-index: 3;
+  box-shadow: 0 0 12px rgba(0,0,0,0.1);
+}
+
+.terminal-preview .demo-split-comparison .split-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) skewX(10deg);
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-paper);
+  background: var(--color-accent);
+  padding: 4px 10px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.terminal-preview .demo-split-comparison .demo-caption {
   flex-shrink: 0;
   font-size: 0.75rem;
   color: var(--color-ash);
   text-align: center;
   padding: var(--spacing-sm) var(--spacing-md);
-}
-
-/* Demo toggle in terminal */
-.terminal-preview .demo-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--spacing-sm);
-}
-
-.terminal-preview .demo-toggle-switch {
-  width: 36px;
-  height: 20px;
-  background: var(--color-mist);
-  border-radius: 10px;
-  position: relative;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.terminal-preview .demo-toggle-switch::after {
-  content: '';
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  width: 16px;
-  height: 16px;
-  background: white;
-  border-radius: 50%;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-  transition: transform 0.2s ease;
-}
-
-.terminal-preview .demo-toggle-switch.active {
-  background: var(--color-accent);
-}
-
-.terminal-preview .demo-toggle-switch.active::after {
-  transform: translateX(16px);
-}
-
-.terminal-preview .demo-toggle-label {
-  font-size: 0.75rem;
-  color: var(--color-ash);
-  transition: color 0.2s ease;
-}
-
-.terminal-preview .demo-toggle-label.active {
-  color: var(--color-ink);
-  font-weight: 500;
+  border-top: 1px solid var(--color-mist);
 }
 
 @keyframes blink { 50% { opacity: 0; } }

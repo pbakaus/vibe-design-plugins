@@ -6,11 +6,11 @@ import { getCommandDemo } from './demos/commands/index.js';
 import { getSkillDemo } from './demos/skills/index.js';
 
 /**
- * Render a command demo
+ * Render a command demo with split-screen comparison
  */
 export function renderCommandDemo(commandId) {
   const demo = getCommandDemo(commandId);
-  
+
   if (!demo) {
     return `
       <div class="demo-container">
@@ -22,20 +22,18 @@ export function renderCommandDemo(commandId) {
       </div>
     `;
   }
-  
-  const viewportClass = demo.viewportClass ? ` ${demo.viewportClass}` : '';
-  
+
+  // Use split-screen comparison
   return `
-    <div class="demo-container">
-      <div class="demo-header">
-        <div class="demo-toggle">
-          <span class="demo-toggle-label active">Before</span>
-          <div class="demo-toggle-switch" data-demo="command-${demo.id}"></div>
-          <span class="demo-toggle-label">After</span>
+    <div class="demo-split-comparison" data-demo="command-${demo.id}">
+      <div class="split-container">
+        <div class="split-before">
+          <div class="split-content">${demo.before}</div>
         </div>
-      </div>
-      <div class="demo-viewport${viewportClass}" data-state="before" id="command-${demo.id}-viewport">
-        ${demo.before}
+        <div class="split-after">
+          <div class="split-content">${demo.after || demo.before}</div>
+        </div>
+        <div class="split-divider"></div>
       </div>
       <div class="demo-caption">${demo.caption}</div>
     </div>
@@ -47,7 +45,7 @@ export function renderCommandDemo(commandId) {
  */
 export function renderSkillDemo(skillId) {
   const skill = getSkillDemo(skillId);
-  
+
   if (!skill || !skill.tabs || skill.tabs.length === 0) {
     return `
       <div class="demo-container">
@@ -59,21 +57,21 @@ export function renderSkillDemo(skillId) {
       </div>
     `;
   }
-  
+
   const showTabs = skill.tabs.length > 1;
-  
+
   const tabs = showTabs ? skill.tabs.map((tab, i) => `
     <button class="demo-tab ${i === 0 ? 'active' : ''}" data-demo-tab="${tab.id}" data-skill="${skillId}">
       ${tab.label}
     </button>
   `).join('') : '';
-  
+
   const panels = skill.tabs.map((tab, i) => `
     <div class="demo-panel ${i === 0 ? 'active' : ''}" data-demo-panel="${tab.id}">
       ${renderSkillTabDemo(skillId, tab)}
     </div>
   `).join('');
-  
+
   return `
     <div class="demo-tabbed-container">
       ${showTabs ? `<div class="demo-tabs">${tabs}</div>` : ''}
@@ -90,7 +88,7 @@ export function renderSkillDemo(skillId) {
 function renderSkillTabDemo(skillId, tab) {
   const hasToggle = tab.hasToggle !== false;
   const demoId = `${skillId}-${tab.id}`;
-  
+
   return `
     <div class="demo-container">
       <div class="demo-header">
@@ -118,10 +116,10 @@ export function setupDemoTabs() {
     tab.addEventListener('click', () => {
       const tabId = tab.dataset.demoTab;
       const container = tab.closest('.demo-tabbed-container');
-      
+
       container.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
-      
+
       container.querySelectorAll('.demo-panel').forEach(p => p.classList.remove('active'));
       container.querySelector(`[data-demo-panel="${tabId}"]`)?.classList.add('active');
     });

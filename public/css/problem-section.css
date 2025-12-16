@@ -1,130 +1,94 @@
 /**
- * Problem Section - The Clarity Lens
- * Interactive before/after comparison
+ * Problem Section - Split Screen Comparison
+ * Interactive before/after comparison with angled divider
  */
 
-/* Additional lens styles that need complex CSS */
-
-.lens-container {
-  cursor: crosshair;
-  user-select: none;
-  -webkit-user-select: none;
-}
-
-/* Subtle grid background for the lens container */
-.lens-container::before {
+/* Subtle grid background for the container */
+.split-container::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: 
+  background-image:
     linear-gradient(var(--color-mist) 1px, transparent 1px),
     linear-gradient(90deg, var(--color-mist) 1px, transparent 1px);
   background-size: 20px 20px;
-  opacity: 0.5;
+  opacity: 0.3;
   pointer-events: none;
 }
 
-/* Lens glow effect */
-.lens-circle::before {
-  content: '';
+/* Hover hint */
+.split-container::after {
+  content: '← Drag →';
   position: absolute;
-  inset: -20px;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    var(--color-accent-dim) 0%,
-    transparent 70%
-  );
-  opacity: 0.5;
-  pointer-events: none;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-ash);
+  background: var(--color-paper);
+  padding: 4px 12px;
+  border-radius: 4px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  z-index: 10;
 }
 
-/* Pulsing animation for the lens when idle */
-@keyframes lensGlow {
-  0%, 100% {
-    box-shadow: 
-      0 0 0 4px var(--color-accent-dim),
-      0 20px 60px rgba(0,0,0,0.15);
-  }
-  50% {
-    box-shadow: 
-      0 0 0 8px var(--color-accent-dim),
-      0 20px 80px rgba(0,0,0,0.2);
-  }
+.split-container:hover::after {
+  opacity: 0;
 }
 
-.lens-container:not(:hover) .lens-circle {
-  animation: lensGlow 3s ease-in-out infinite;
-}
-
-/* Smooth transitions when hovering */
-.lens-container:hover .lens-circle {
-  transition: left 0.05s linear, top 0.05s linear;
-}
-
-.lens-container:hover .lens-after {
-  transition: clip-path 0.05s linear;
-}
-
-/* Mobile: tap to reveal */
-@media (hover: none) {
-  .lens-label {
-    display: none;
-  }
-  
-  .lens-circle::after {
-    content: 'Tap & Drag';
-    position: absolute;
-    bottom: -36px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 0.625rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    background: var(--color-paper);
-    padding: 4px 12px;
-    border-radius: 4px;
-    white-space: nowrap;
-  }
-}
-
-/* Hover state for impeccable card inside lens */
-.lens-after .impeccable-card {
+/* Hover state for impeccable card */
+.split-after .impeccable-card {
   box-shadow: 0 10px 40px rgba(0,0,0,0.08);
 }
 
-/* Entry animation for the lens */
-@keyframes lensEntry {
+/* Entry animation for the divider */
+@keyframes splitEntry {
   from {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0.8);
+    transform: translateX(-50%) skewX(-10deg) scaleY(0.8);
   }
   to {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translateX(-50%) skewX(-10deg) scaleY(1);
   }
 }
 
-.lens-circle {
-  animation: lensEntry 0.6s var(--ease-out) 0.3s backwards;
+.split-divider {
+  animation: splitEntry 0.6s var(--ease-out) 0.3s backwards;
 }
 
 /* Labels hover states */
-.lens-label-item {
+.split-label-item {
   transition: color var(--duration-fast) var(--ease-out);
   cursor: default;
 }
 
-.lens-label-item:hover {
+.split-label-item:hover {
   color: var(--color-text);
 }
 
-.lens-label-item[data-point="after"]:hover .lens-label-dot--accent {
+.split-label-item[data-point="after"]:hover .split-label-dot--accent {
   transform: scale(1.3);
 }
 
-.lens-label-dot {
+.split-label-dot {
   transition: transform var(--duration-fast) var(--ease-spring);
+}
+
+/* Mobile adjustments */
+@media (hover: none) {
+  .split-container::after {
+    content: '← Swipe →';
+  }
+}
+
+@media (max-width: 600px) {
+  .split-label {
+    font-size: 0.5625rem;
+    padding: 4px 10px;
+  }
 }
