@@ -58,7 +58,7 @@ Add motion systematically across these categories:
 - **Show/hide**: Fade + slide (not instant), appropriate timing (200-300ms)
 - **Expand/collapse**: Height transition with overflow handling, icon rotation
 - **Loading states**: Skeleton screen fades, spinner animations, progress bars
-- **Success/error**: Color transitions, icon animations, shake or bounce effects
+- **Success/error**: Color transitions, icon animations, gentle scale pulse
 - **Enable/disable**: Opacity transitions, cursor changes
 
 ### Navigation & Flow
@@ -82,6 +82,28 @@ Add motion systematically across these categories:
 ## Technical Implementation
 
 Use appropriate techniques for each animation:
+
+### Timing & Easing
+
+**Durations by purpose:**
+- **100-150ms**: Instant feedback (button press, toggle)
+- **200-300ms**: State changes (hover, menu open)
+- **300-500ms**: Layout changes (accordion, modal)
+- **500-800ms**: Entrance animations (page load)
+
+**Easing curves (use these, not CSS defaults):**
+```css
+/* Recommended - natural deceleration */
+--ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);    /* Smooth, refined */
+--ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);   /* Slightly snappier */
+--ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);     /* Confident, decisive */
+
+/* AVOID - feel dated and tacky */
+/* bounce: cubic-bezier(0.34, 1.56, 0.64, 1); */
+/* elastic: cubic-bezier(0.68, -0.6, 0.32, 1.6); */
+```
+
+**Exit animations are faster than entrances.** Use ~75% of enter duration.
 
 ### CSS Animations
 ```css
@@ -117,13 +139,13 @@ Use appropriate techniques for each animation:
 ```
 
 **NEVER**:
-- Animate without purpose (every animation should have a reason)
-- Use long durations (>500ms feels laggy)
-- Animate layout properties (width, height, top, left) - use transform instead
-- Block interaction during animation (unless intentional)
-- Ignore reduced motion preferences (accessibility violation)
-- Animate everything (animation fatigue is real)
-- Create animations that draw more attention than content
+- Use bounce or elastic easing curves—they feel dated and draw attention to the animation itself
+- Animate layout properties (width, height, top, left)—use transform instead
+- Use durations over 500ms for feedback—it feels laggy
+- Animate without purpose—every animation needs a reason
+- Ignore `prefers-reduced-motion`—this is an accessibility violation
+- Animate everything—animation fatigue makes interfaces feel exhausting
+- Block interaction during animations unless intentional
 
 ## Verify Quality
 

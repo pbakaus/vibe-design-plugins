@@ -97,7 +97,7 @@ The common mistake: using the accent color everywhere because it's "the brand co
 These commonly fail contrast or cause readability issues:
 
 - Light gray text on white (the #1 accessibility fail)
-- **Gray text on any colored background**—gray looks washed out and dead on color. Use a tinted version of the background color instead, or transparency
+- **Gray text on any colored background**—gray looks washed out and dead on color. Use a darker shade of the background color, or transparency
 - Red text on green background (or vice versa)—8% of men can't distinguish these
 - Blue text on red background (vibrates visually)
 - Yellow text on white (almost always fails)

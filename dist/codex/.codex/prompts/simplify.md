@@ -51,7 +51,8 @@ Systematically remove complexity across these dimensions:
 - **Reduce color palette**: Use 1-2 colors plus neutrals, not 5-7 colors
 - **Limit typography**: One font family, 3-4 sizes maximum, 2-3 weights
 - **Remove decorations**: Eliminate borders, shadows, backgrounds that don't serve hierarchy or function
-- **Flatten structure**: Reduce nesting, remove unnecessary containers
+- **Flatten structure**: Reduce nesting, remove unnecessary containers—never nest cards inside cards
+- **Remove unnecessary cards**: Cards aren't needed for basic layout; use spacing and alignment instead
 - **Consistent spacing**: Use one spacing scale, remove arbitrary gaps
 
 ### Layout Simplification
@@ -74,6 +75,7 @@ Systematically remove complexity across these dimensions:
 - **Remove jargon**: Plain language always wins
 - **Scannable structure**: Short paragraphs, bullet points, clear headings
 - **Essential information only**: Remove marketing fluff, legalese, hedging
+- **Remove redundant copy**: No headers restating intros, no repeated explanations, say it once
 
 ### Code Simplification
 - **Remove unused code**: Dead CSS, unused components, orphaned files

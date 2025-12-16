@@ -75,9 +75,10 @@ Add personality and joy through these methods:
 }
 
 /* Ripple effect on click */
-/* Spring animation on hover */
+/* Smooth lift on hover */
 .button:hover {
-  animation: spring 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transform: translateY(-2px);
+  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1); /* ease-out-quart */
 }
 ```
 

@@ -162,6 +162,8 @@ Every piece of copy should follow these rules:
 - Use humor for errors (be empathetic instead)
 - Assume technical knowledge
 - Vary terminology (pick one term and stick with it)
+- Repeat information (headers restating intros, redundant explanations)
+- Use placeholders as the only labels (they disappear when users type)
 
 ## Verify Improvements
 

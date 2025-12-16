@@ -51,11 +51,12 @@ Systematically increase impact across these dimensions:
 - **Unexpected choices**: Variable fonts, display fonts for headlines, monospace as accent
 
 ### Color Intensification
-- **Increase saturation**: Shift to more vibrant, energetic colors
-- **Bold palette**: Introduce unexpected color combinations
+- **Increase saturation**: Shift to more vibrant, energetic colors (but not neon)
+- **Bold palette**: Introduce unexpected color combinations—avoid the purple-blue gradient AI slop
 - **Dominant color strategy**: Let one bold color own 60% of the design
 - **Sharp accents**: High-contrast accent colors that pop
-- **Gradients**: Rich, multi-stop gradients or mesh gradients
+- **Tinted neutrals**: Replace pure grays with tinted grays that harmonize with your palette
+- **Rich gradients**: Intentional multi-stop gradients (not generic purple-to-blue)
 
 ### Spatial Drama
 - **Extreme scale jumps**: Make important elements 3-5x larger than surroundings
@@ -72,10 +73,10 @@ Systematically increase impact across these dimensions:
 - **Custom elements**: Illustrative elements, custom icons, decorative details
 
 ### Motion & Animation
-- **Entrance choreography**: Staggered, dramatic page load animations
+- **Entrance choreography**: Staggered, dramatic page load animations with 50-100ms delays
 - **Scroll effects**: Parallax, reveal animations, scroll-triggered sequences
 - **Micro-interactions**: Satisfying hover effects, click feedback, state changes
-- **Transitions**: Smooth, noticeable transitions between states
+- **Transitions**: Smooth, noticeable transitions using ease-out-quart/quint/expo (not bounce or elastic—they cheapen the effect)
 
 ### Composition Boldness
 - **Hero moments**: Create clear focal points with dramatic treatment

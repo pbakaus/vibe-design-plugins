@@ -56,10 +56,12 @@ Add color systematically across these dimensions:
 - **Hover states**: Introduce color on interaction
 
 ### Background & Surfaces
-- **Tinted backgrounds**: Replace pure gray (`#f5f5f5`) with warm neutrals (`#faf9f7`) or cool tints (`#f8f9fb`)
+- **Tinted backgrounds**: Replace pure gray (`#f5f5f5`) with warm neutrals (`oklch(97% 0.01 60)`) or cool tints (`oklch(97% 0.01 250)`)
 - **Colored sections**: Use subtle background colors to separate areas
-- **Gradient backgrounds**: Add depth with subtle gradients
+- **Gradient backgrounds**: Add depth with subtle, intentional gradients (not generic purple-blue)
 - **Cards & surfaces**: Tint cards or surfaces slightly for warmth
+
+**Use OKLCH for color**: It's perceptually uniform, meaning equal steps in lightness *look* equal. Great for generating harmonious scales.
 
 ### Data Visualization
 - **Charts & graphs**: Use color to encode categories or values
@@ -106,11 +108,13 @@ Ensure color addition improves rather than overwhelms:
 **NEVER**:
 - Use every color in the rainbow (choose 2-4 colors beyond neutrals)
 - Apply color randomly without semantic meaning
+- Put gray text on colored backgrounds—it looks washed out; use a darker shade of the background color or transparency instead
+- Use pure gray for neutrals—add subtle color tint (warm or cool) for sophistication
+- Use pure black (`#000`) or pure white (`#fff`) for large areas
 - Violate WCAG contrast requirements
 - Use color as the only indicator (accessibility issue)
 - Make everything colorful (defeats the purpose)
-- Choose colors that conflict with brand identity
-- Use pure black (`#000`) or pure white (`#fff`) for large areas
+- Default to purple-blue gradients (AI slop aesthetic)
 
 ## Verify Color Addition
 
