@@ -68,13 +68,57 @@ function buildTailwindCSS() {
 }
 
 /**
+ * Build frontend JavaScript bundle using Bun's bundler
+ */
+async function buildFrontendJS() {
+  const entrypoint = path.join(ROOT_DIR, 'public', 'app.js');
+  const outdir = path.join(ROOT_DIR, 'public', 'dist');
+
+  console.log('📦 Bundling frontend JavaScript...');
+
+  try {
+    const result = await Bun.build({
+      entrypoints: [entrypoint],
+      outdir: outdir,
+      target: 'browser',
+      format: 'esm',
+      minify: true,
+      sourcemap: 'linked',
+      naming: '[name].bundle.[ext]',
+    });
+
+    if (!result.success) {
+      console.error('Bundle failed:');
+      for (const log of result.logs) {
+        console.error(log);
+      }
+      process.exit(1);
+    }
+
+    // Find the main bundle output
+    const mainBundle = result.outputs.find(o => o.kind === 'entry-point');
+    if (mainBundle) {
+      const bundleName = path.basename(mainBundle.path);
+      const bundleSize = (mainBundle.size / 1024).toFixed(1);
+      console.log(`✓ Frontend JS bundled to public/dist/${bundleName} (${bundleSize} KB)\n`);
+    }
+
+    return result;
+  } catch (error) {
+    console.error('Failed to bundle frontend JS:', error.message);
+    process.exit(1);
+  }
+}
+
+/**
  * Main build process
  */
 async function build() {
   console.log('🔨 Building cross-provider design plugins...\n');
 
-  // Build Tailwind CSS first
+  // Build frontend assets
   buildTailwindCSS();
+  await buildFrontendJS();
 
   // Read source files
   const { commands, skills } = readSourceFiles(ROOT_DIR);
