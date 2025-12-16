@@ -261,7 +261,9 @@ export class PeriodicTable {
 	createElement(cmd, category) {
 		const colors = categoryColors[category];
 
-		const el = document.createElement('div');
+		const el = document.createElement('button');
+		el.type = 'button';
+		el.setAttribute('aria-label', `/${cmd} command - ${categoryLabels[category]}`);
 		el.style.cssText = `
 			width: 56px;
 			height: 64px;
@@ -275,6 +277,8 @@ export class PeriodicTable {
 			cursor: pointer;
 			transition: transform 0.15s ease, box-shadow 0.15s ease;
 			position: relative;
+			font-family: inherit;
+			padding: 0;
 		`;
 
 		// Atomic number
@@ -315,8 +319,8 @@ export class PeriodicTable {
 		name.textContent = `/${cmd}`;
 		el.appendChild(name);
 
-		// Hover effects
-		el.addEventListener('mouseenter', () => {
+		// Shared handler for activation (hover or focus)
+		const activate = () => {
 			// Visual feedback
 			el.style.transform = 'translateY(-2px)';
 			el.style.boxShadow = `0 4px 12px ${colors.border}40`;
@@ -325,19 +329,28 @@ export class PeriodicTable {
 			this.showCommandInfo(cmd);
 
 			// Track active element
-			if (this.activeElement) {
+			if (this.activeElement && this.activeElement !== el) {
 				this.activeElement.style.transform = 'translateY(0)';
 				this.activeElement.style.boxShadow = 'none';
 			}
 			this.activeElement = el;
-		});
+		};
 
-		el.addEventListener('mouseleave', () => {
+		// Shared handler for deactivation
+		const deactivate = () => {
 			el.style.transform = 'translateY(0)';
 			el.style.boxShadow = 'none';
-		});
+		};
 
-		// Click to scroll to command
+		// Mouse events
+		el.addEventListener('mouseenter', activate);
+		el.addEventListener('mouseleave', deactivate);
+
+		// Keyboard focus events
+		el.addEventListener('focus', activate);
+		el.addEventListener('blur', deactivate);
+
+		// Click/Enter to scroll to command
 		el.addEventListener('click', () => {
 			const target = document.getElementById(`cmd-${cmd}`);
 			if (target) {

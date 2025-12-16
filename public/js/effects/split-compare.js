@@ -94,22 +94,52 @@ export function initSplitCompare(container, options = {}) {
 		}
 	}
 
-	function handleTouchStart() {
+	let touchStartX = 0;
+	let touchStartY = 0;
+	let isDragging = false;
+	const DRAG_THRESHOLD = 10; // Minimum horizontal movement to start dragging
+
+	function handleTouchStart(e) {
+		const touch = e.touches[0];
+		touchStartX = touch.clientX;
+		touchStartY = touch.clientY;
+		isDragging = false;
 		isHovering = true;
 	}
 
 	function handleTouchEnd() {
 		isHovering = false;
+		isDragging = false;
 		targetX = defaultPosition;
 		startAnimation();
 	}
 
 	function handleTouchMove(e) {
-		e.preventDefault();
 		const touch = e.touches[0];
-		const rect = splitContainer.getBoundingClientRect();
-		targetX = ((touch.clientX - rect.left) / rect.width) * 100;
-		startAnimation();
+		const deltaX = Math.abs(touch.clientX - touchStartX);
+		const deltaY = Math.abs(touch.clientY - touchStartY);
+
+		// Only start dragging if horizontal movement is greater than vertical
+		// This allows vertical scrolling to pass through
+		if (!isDragging) {
+			if (deltaX > DRAG_THRESHOLD && deltaX > deltaY) {
+				isDragging = true;
+			} else if (deltaY > DRAG_THRESHOLD) {
+				// User is scrolling vertically, don't interfere
+				return;
+			} else {
+				// Not enough movement yet
+				return;
+			}
+		}
+
+		// Only prevent default when actively dragging horizontally
+		if (isDragging) {
+			e.preventDefault();
+			const rect = splitContainer.getBoundingClientRect();
+			targetX = ((touch.clientX - rect.left) / rect.width) * 100;
+			startAnimation();
+		}
 	}
 
 	// Attach listeners

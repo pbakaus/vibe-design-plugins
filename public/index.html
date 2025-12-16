@@ -22,9 +22,12 @@
   </script>
 </head>
 <body class="min-h-screen overflow-x-hidden leading-relaxed">
+  <!-- Skip to main content link for keyboard users -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <!-- Grain Overlay -->
   <div class="grain-overlay" aria-hidden="true"></div>
-  
+
   <!-- 1. HERO - Liquid Typography -->
   <header class="hero-section" id="hero">
     <canvas class="hero-canvas" id="hero-canvas"></canvas>
@@ -49,7 +52,7 @@
     </div>
   </header>
 
-  <main class="site-content">
+  <main class="site-content" id="main-content">
     <!-- 2. THE PROBLEM - AI Design Bias -->
     <section class="problem-section" id="problem">
       <div class="section-header" data-reveal>
@@ -225,9 +228,9 @@
             <span class="download-card-badge">Rules + Commands</span>
             <p class="download-card-desc">Commands and rules for Cursor IDE. Works via appending, no frontmatter required.</p>
           </div>
-          <button class="btn btn-primary" data-bundle="cursor">
+          <button class="btn btn-primary" data-bundle="cursor" aria-label="Download Cursor bundle">
             <span>Download</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
             </svg>
           </button>
@@ -244,9 +247,9 @@
             <span class="download-card-badge">Full Featured</span>
             <p class="download-card-desc">Complete YAML frontmatter with argument support. Follows Anthropic Skills specification.</p>
           </div>
-          <button class="btn btn-primary" data-bundle="claude-code">
+          <button class="btn btn-primary" data-bundle="claude-code" aria-label="Download Claude Code bundle">
             <span>Download</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
             </svg>
           </button>
@@ -263,9 +266,9 @@
             <span class="download-card-badge">TOML + Modular</span>
             <p class="download-card-desc">TOML-formatted commands with modular skill imports via GEMINI.md.</p>
           </div>
-          <button class="btn btn-primary" data-bundle="gemini">
+          <button class="btn btn-primary" data-bundle="gemini" aria-label="Download Gemini CLI bundle">
             <span>Download</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
             </svg>
           </button>
@@ -282,9 +285,9 @@
             <span class="download-card-badge">Prompts + Routing</span>
             <p class="download-card-desc">Custom prompt format with skill routing through AGENTS.md architecture.</p>
           </div>
-          <button class="btn btn-primary" data-bundle="codex">
+          <button class="btn btn-primary" data-bundle="codex" aria-label="Download Codex CLI bundle">
             <span>Download</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
             </svg>
           </button>

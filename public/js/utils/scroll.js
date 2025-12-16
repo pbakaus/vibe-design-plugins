@@ -1,6 +1,24 @@
 import Lenis from "lenis";
 
+// Check if user prefers reduced motion
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 export function initSmoothScroll() {
+	// Skip smooth scroll entirely if user prefers reduced motion
+	if (prefersReducedMotion) {
+		// Still handle anchor links but with instant scroll
+		document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+			anchor.addEventListener("click", (e) => {
+				e.preventDefault();
+				const target = document.querySelector(anchor.getAttribute("href"));
+				if (target) {
+					target.scrollIntoView({ behavior: 'auto', block: 'start' });
+				}
+			});
+		});
+		return null;
+	}
+
 	const lenis = new Lenis({
 		duration: 1.2,
 		easing: (t) => Math.min(1, 1.001 - 2 ** (-10 * t)),
@@ -28,7 +46,7 @@ export function initSmoothScroll() {
 			}
 		});
 	});
-    
+
     return lenis;
 }
 

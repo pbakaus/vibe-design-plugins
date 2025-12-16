@@ -83,6 +83,31 @@
 }
 
 /* ============================================
+   SKIP LINK (Accessibility)
+   ============================================ */
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0 0 8px 8px;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ============================================
    BASE STYLES
    ============================================ */
 
@@ -132,12 +157,22 @@ h1, h2, h3, h4, h5, h6 {
 
 a {
   color: var(--color-accent);
-  text-decoration: none;
-  transition: color var(--duration-fast) var(--ease-out);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: color var(--duration-fast) var(--ease-out), text-decoration-color var(--duration-fast) var(--ease-out);
 }
 
 a:hover {
   color: var(--color-accent-hover);
+  text-decoration-thickness: 2px;
+}
+
+/* Remove underline for buttons styled as links */
+.btn,
+.footer-logo,
+[class*="nav-item"] {
+  text-decoration: none;
 }
 
 strong {
@@ -1210,6 +1245,21 @@ code {
   color: var(--color-paper);
 }
 
+/* Focus styles for all buttons */
+.btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.btn-primary:focus-visible {
+  outline-color: var(--color-paper);
+  box-shadow: 0 0 0 4px var(--color-accent);
+}
+
+.btn-secondary:focus-visible {
+  outline-color: var(--color-accent);
+}
+
 /* ============================================
    ANIMATIONS
    ============================================ */
@@ -1254,6 +1304,90 @@ code {
 [data-reveal]:nth-child(2) { transition-delay: 0.1s; }
 [data-reveal]:nth-child(3) { transition-delay: 0.2s; }
 [data-reveal]:nth-child(4) { transition-delay: 0.3s; }
+
+/* ============================================
+   REDUCED MOTION (Accessibility)
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Allow smooth scrolling to remain for anchor links only if user explicitly triggers */
+  html {
+    scroll-behavior: auto;
+  }
+
+  /* Disable hero canvas animation */
+  .hero-canvas {
+    display: none;
+  }
+
+  /* Disable scroll indicator animation */
+  .hero-scroll-indicator {
+    animation: none;
+    opacity: 1;
+  }
+
+  /* Disable reveal animations - show content immediately */
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Disable gallery frame transitions */
+  .gallery-frame {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ============================================
+   ERROR STATES
+   ============================================ */
+
+.load-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--spacing-2xl) var(--spacing-lg);
+  gap: var(--spacing-md);
+  background: var(--color-cream);
+  border: 1px solid var(--color-mist);
+  border-radius: 8px;
+}
+
+.load-error-icon {
+  font-size: 2.5rem;
+  color: var(--color-accent);
+}
+
+.load-error-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--color-ink);
+  margin: 0;
+}
+
+.load-error-text {
+  font-size: 1rem;
+  color: var(--color-ash);
+  max-width: 40ch;
+  line-height: 1.5;
+}
+
+.load-error-retry {
+  margin-top: var(--spacing-sm);
+}
 
 /* ============================================
    IMPORTS
@@ -1383,6 +1517,12 @@ code {
   right: 0;
   height: 2px;
   background: var(--color-accent);
+}
+
+.pattern-tab:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 /* Panels */

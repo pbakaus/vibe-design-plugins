@@ -2,6 +2,12 @@ export function initHeroEffect() {
 	const canvas = document.getElementById("hero-canvas");
 	if (!canvas) return;
 
+	// Respect user's motion preferences
+	if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+		canvas.style.display = 'none';
+		return;
+	}
+
 	const ctx = canvas.getContext("2d");
 	let width, height;
 	let points = [];
